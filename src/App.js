@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import Child from "./components/Child";
+import RootContext from "./RootContext";
+
+// This object will be passed to the GrandChild component through context
+const data = {
+  number: 123,
+  text: "ABC",
+  func: () => {
+    alert("Hello!");
+  },
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // RootContext Provider
+    <RootContext.Provider value={data}>
+      <div style={{ padding: 30 }}>
+        <Child/>
+      </div>
+    </RootContext.Provider>
   );
 }
 
